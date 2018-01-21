@@ -19,9 +19,13 @@ special rotation classes, the common suggestion is to implement them yourself
 https://stackoverflow.com/questions/6802577/rotation-of-3d-vector). However,
 everybody implementing their own version of the same thing can hardly be seen as
 ideal.
+
 Therefore, this package provides simple functions to generate rotation matrices
 for a given axis and angle, or for three given angles (proper Euler angles
-or Tait-Bryan angles)
+or Tait-Bryan angles).
+
+Trivial example usage
+----------------------
 
 .. code:: python
 
