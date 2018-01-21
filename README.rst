@@ -1,3 +1,6 @@
+.. image:: https://travis-ci.org/NOhs/mgen.svg?branch=master
+    :target: https://travis-ci.org/NOhs/mgen
+
 MGen: Convenient matrix generation functions
 ============================================
 
