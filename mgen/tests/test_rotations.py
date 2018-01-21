@@ -18,6 +18,7 @@ from mgen import rotation_from_angles
 from mgen import rotation_around_x
 from mgen import rotation_around_y
 from mgen import rotation_around_z
+from mgen import rotation_around_axis
 
 def is_close(m1, m2):
     np.testing.assert_allclose(m1, m2, atol=1.e-7)
@@ -87,6 +88,16 @@ class TestRotations(TestCase):
     def test_raises_if_sequence_unknown(self):
         with self.assertRaises(ValueError):
             rotation_from_angles((0, 0, 0), 'AXY')
+
+    def test_rotation_around_axis(self):
+        for random in (np.random.rand(10000) - 0.5) * 2 * np.pi:
+            is_close(rotation_around_axis([1, 0, 0], random), rotation_around_x(random))
+            is_close(rotation_around_axis([0, 1, 0], random), rotation_around_y(random))
+            is_close(rotation_around_axis([0, 0, 1], random), rotation_around_z(random))
+            # Test if non-normalised axis works, too
+            is_close(rotation_around_axis([2, 0, 0], random), rotation_around_x(random))
+
+        is_close(rotation_around_axis([1, 1, 1], 2*np.pi/3), rotation_from_angles([0, np.pi/2, np.pi/2], 'XYZ'))
 
     def test_accepts_tuple_list_and_array(self):
         angles_t = (0.1, 0.2, 0.3)
