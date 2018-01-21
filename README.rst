@@ -1,5 +1,10 @@
-.. image:: https://travis-ci.org/NOhs/mgen.svg?branch=master
-    :target: https://travis-ci.org/NOhs/mgen
+|test| |coverage|
+
+.. |test| image:: https://travis-ci.org/NOhs/mgen.svg?branch=master
+    :target: https://travis-ci.org/NOhs/mgen 
+.. |coverage| image:: https://coveralls.io/repos/github/NOhs/mgen/badge.svg
+    :target: https://coveralls.io/github/NOhs/mgen
+
 
 MGen: Convenient matrix generation functions
 ============================================
