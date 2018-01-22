@@ -11,6 +11,7 @@ def rotation_around_axis(axis, angle):
     (https://en.wikipedia.org/wiki/Euler%E2%80%93Rodrigues_formula).
 
     :param axis: the axis around which to rotate as a vector of length 3
+                 (no normalisation required)
     :type axis: anything that can be converted to a :any:`numpy.array`
     :param angle: the angle in radians to rotate
     :type angle: float
