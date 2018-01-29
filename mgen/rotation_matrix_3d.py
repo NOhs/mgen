@@ -8,16 +8,17 @@ import math
 def rotation_around_axis(axis, angle):
     '''
     Generates a 3x3 rotation matrix using the Euler-Rodrigues formula
-    (https://en.wikipedia.org/wiki/Euler%E2%80%93Rodrigues_formula).
+    following the definition here:
+    https://en.wikipedia.org/wiki/Euler%E2%80%93Rodrigues_formula.
 
     :param axis: the axis around which to rotate as a vector of length 3
                  (no normalisation required)
-    :type axis: anything that can be converted to a :any:`numpy.array`
+    :type axis: array like
     :param angle: the angle in radians to rotate
     :type angle: float
 
-    :returns: the 3x3 rotation matrix
-    :rtype: :any:`numpy.ndarray`
+    :returns: the rotation matrix
+    :rtype: a 3x3 :any:`numpy.ndarray`
     '''
     axis = axis/np.linalg.norm(axis)
 
@@ -39,6 +40,9 @@ def rotation_around_x(angle):
 
     :param angle: the angle by which to rotate around the x-axis
     :type angle: float
+
+    :returns: the rotation matrix
+    :rtype: a 3x3 :any:`numpy.ndarray`
     '''
     c = math.cos(angle)
     s = math.sin(angle)
@@ -56,6 +60,9 @@ def rotation_around_y(angle):
 
     :param angle: the angle by which to rotate around the y-axis
     :type angle: float
+
+    :returns: the rotation matrix
+    :rtype: a 3x3 :any:`numpy.ndarray`
     '''
     c = math.cos(angle)
     s = math.sin(angle)
@@ -73,6 +80,9 @@ def rotation_around_z(angle):
 
     :param angle: the angle by which to rotate around the z-axis
     :type angle: float
+
+    :returns: the rotation matrix
+    :rtype: a 3x3 :any:`numpy.ndarray`
     '''
     c = math.cos(angle)
     s = math.sin(angle)
@@ -177,11 +187,12 @@ def rotation_from_angles(angles, rotation_sequence):
 
     :param angles: the three angles in radians that define the rotation as a vector
                    of length 3
-    :type angles: anything that can be converted to a :any:`numpy.array`
+    :type angles: array like
     :param rotation_sequence: the sequence of rotations that make up the
                               total rotation. Example: `XYZ` yields the rotation
                               matrix :math:`R=XYZ`, i.e. the product of the
-                              three matrices :math:`X,\ Y,\ Z`.
+                              three matrices :math:`X`, :math:`Y` and :math:`Z`.
+    :type rotation_sequence: str
     :returns: the rotation matrix
     :rtype: a 3x3 :any:`numpy.array`
     '''
