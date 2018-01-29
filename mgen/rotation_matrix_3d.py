@@ -162,25 +162,6 @@ def _generate_matrix_ZXY(c1, c2, c3, s1, s2, s3):
 # End of wikipedia copy paste
 
 
-_ROTATION_GENERATORS = {
-    'XZX' : _generate_matrix_XZX,
-    'XYX' : _generate_matrix_XYX,
-    'YXY' : _generate_matrix_YXY,
-    'YZY' : _generate_matrix_YZY,
-    'ZYZ' : _generate_matrix_ZYZ,
-    'ZXZ' : _generate_matrix_ZXZ,
-    'XZY' : _generate_matrix_XZY,
-    'XYZ' : _generate_matrix_XYZ,
-    'YXZ' : _generate_matrix_YXZ,
-    'YZX' : _generate_matrix_YZX,
-    'ZYX' : _generate_matrix_ZYX,
-    'ZXY' : _generate_matrix_ZXY}
-'''
-Dictionary that maps the naming of the rotation generator (named according to
-https://en.wikipedia.org/wiki/Euler_angles#Rotation_matrix) to the appropriate
-function.
-'''
-
 def rotation_from_angles(angles, rotation_sequence):
     '''
     Generate a 3x3 rotation matrix using proper Euler angles or
@@ -201,14 +182,15 @@ def rotation_from_angles(angles, rotation_sequence):
                               total rotation. Example: `XYZ` yields the rotation
                               matrix :math:`R=XYZ`, i.e. the product of the
                               three matrices :math:`X,\ Y,\ Z`.
+    :returns: the rotation matrix
+    :rtype: a 3x3 :any:`numpy.array`
     '''
 
     c1, c2, c3 = np.cos(angles)
     s1, s2, s3 = np.sin(angles)
     try:
-        return _ROTATION_GENERATORS[rotation_sequence](c1, c2, c3, s1, s2, s3)
+        return globals()['_generate_matrix_'+rotation_sequence](c1, c2, c3, s1, s2, s3)
     except KeyError:
         raise ValueError(
             'Sequence ' + rotation_sequence
-            + ' is not valid. Please choose from: '
-            + str(_ROTATION_GENERATORS.keys()))
+            + ' is not valid.')
