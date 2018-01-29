@@ -31,7 +31,7 @@ Trivial example usage
 
         import numpy as np
         from mgen import rotation_around_axis
-        from mgen import rotation_from angles
+        from mgen import rotation_from_angles
         from mgen import rotation_around_x
 
         matrix = rotation_around_axis([1, 0, 0], np.pi/2)
