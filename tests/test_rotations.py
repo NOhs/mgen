@@ -23,12 +23,12 @@ from mgen import rotation_around_axis
 def is_close(m1, m2):
     np.testing.assert_allclose(m1, m2, atol=1.e-7)
 
-def test_procedure(func, single_rotations, name):
+def test_matrix_generation(func, single_rotations, name):
     rot_m = lambda a1, a2, a3: func(cos(a1), cos(a2), cos(a3), sin(a1), sin(a2), sin(a3))
     r1, r2, r3 = single_rotations
     rot_conv = lambda a1, a2, a3: rotation_from_angles((a1, a2, a3), name)
-    randoms = (np.random.rand(10000, 3) - 0.5) * 2 * np.pi
-    for rand1, rand2, rand3 in randoms:
+
+    for rand1, rand2, rand3 in np.random.uniform(-np.pi, np.pi, (10000, 3)):
         is_close(rot_m(rand1, rand2, rand3), r1(rand1).dot(r2(rand2)).dot(r3(rand3)))
         is_close(rot_m(rand1, rand2, rand3), rot_conv(rand1, rand2, rand3))
 
@@ -50,40 +50,40 @@ class TestRotations(TestCase):
 
 
     def test_rotation_XZX(self):
-        test_procedure(_generate_matrix_XZX, (rotation_around_x, rotation_around_z, rotation_around_x), 'XZX')
+        test_matrix_generation(_generate_matrix_XZX, (rotation_around_x, rotation_around_z, rotation_around_x), 'XZX')
 
     def test_rotation_XYX(self):
-        test_procedure(_generate_matrix_XYX, (rotation_around_x, rotation_around_y, rotation_around_x), 'XYX')
+        test_matrix_generation(_generate_matrix_XYX, (rotation_around_x, rotation_around_y, rotation_around_x), 'XYX')
 
     def test_rotation_YXY(self):
-        test_procedure(_generate_matrix_YXY, (rotation_around_y, rotation_around_x, rotation_around_y), 'YXY')
+        test_matrix_generation(_generate_matrix_YXY, (rotation_around_y, rotation_around_x, rotation_around_y), 'YXY')
 
     def test_rotation_YZY(self):
-        test_procedure(_generate_matrix_YZY, (rotation_around_y, rotation_around_z, rotation_around_y), 'YZY')
+        test_matrix_generation(_generate_matrix_YZY, (rotation_around_y, rotation_around_z, rotation_around_y), 'YZY')
 
     def test_rotation_ZYZ(self):
-        test_procedure(_generate_matrix_ZYZ, (rotation_around_z, rotation_around_y, rotation_around_z), 'ZYZ')
+        test_matrix_generation(_generate_matrix_ZYZ, (rotation_around_z, rotation_around_y, rotation_around_z), 'ZYZ')
 
     def test_rotation_ZXZ(self):
-        test_procedure(_generate_matrix_ZXZ, (rotation_around_z, rotation_around_x, rotation_around_z), 'ZXZ')
+        test_matrix_generation(_generate_matrix_ZXZ, (rotation_around_z, rotation_around_x, rotation_around_z), 'ZXZ')
 
     def test_rotation_XZY(self):
-        test_procedure(_generate_matrix_XZY, (rotation_around_x, rotation_around_z, rotation_around_y), 'XZY')
+        test_matrix_generation(_generate_matrix_XZY, (rotation_around_x, rotation_around_z, rotation_around_y), 'XZY')
 
     def test_rotation_XYZ(self):
-        test_procedure(_generate_matrix_XYZ, (rotation_around_x, rotation_around_y, rotation_around_z), 'XYZ')
+        test_matrix_generation(_generate_matrix_XYZ, (rotation_around_x, rotation_around_y, rotation_around_z), 'XYZ')
 
     def test_rotation_YXZ(self):
-        test_procedure(_generate_matrix_YXZ, (rotation_around_y, rotation_around_x, rotation_around_z), 'YXZ')
+        test_matrix_generation(_generate_matrix_YXZ, (rotation_around_y, rotation_around_x, rotation_around_z), 'YXZ')
 
     def test_rotation_YZX(self):
-        test_procedure(_generate_matrix_YZX, (rotation_around_y, rotation_around_z, rotation_around_x), 'YZX')
+        test_matrix_generation(_generate_matrix_YZX, (rotation_around_y, rotation_around_z, rotation_around_x), 'YZX')
 
     def test_rotation_ZYX(self):
-        test_procedure(_generate_matrix_ZYX, (rotation_around_z, rotation_around_y, rotation_around_x), 'ZYX')
+        test_matrix_generation(_generate_matrix_ZYX, (rotation_around_z, rotation_around_y, rotation_around_x), 'ZYX')
 
     def test_rotation_ZXY(self):
-        test_procedure(_generate_matrix_ZXY, (rotation_around_z, rotation_around_x, rotation_around_y), 'ZXY')
+        test_matrix_generation(_generate_matrix_ZXY, (rotation_around_z, rotation_around_x, rotation_around_y), 'ZXY')
 
     def test_raises_if_sequence_unknown(self):
         with self.assertRaises(ValueError):
