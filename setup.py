@@ -5,11 +5,9 @@ from setuptools import setup
 with open('README.rst') as readme:
     long_description = readme.read()
 
-version = check_output(['git', 'describe']).decode('utf-8').strip().replace('v','')
-
 setup(
     name='mgen',
-    version=version,
+    version={VERSION},
     description='Matrix generation functions',
     author='NOhs',
     packages=['mgen'],
