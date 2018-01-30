@@ -1,18 +1,23 @@
 language: python
 python:
-  - "3.5"
-  - "3.6"
-  - "3.6-dev"  # 3.6 development branch
-  - "3.7-dev"  # 3.7 development branch
-  - "nightly"
-# command to install dependencies
+- '3.5'
+- '3.6'
+- 3.6-dev
+- 3.7-dev
+- nightly
 install:
-  - pip install numpy
-  - pip install coveralls
-# command to run tests
+- pip install numpy
+- pip install coveralls
 script:
-  - coverage run --source mgen setup.py test
-  - coverage report -m
+- coverage run --source mgen setup.py test
+- coverage report -m
 after_success:
-  - coveralls
-  
+- coveralls
+deploy:
+  provider: pypi
+  user:
+    secure: pu7Oc/10qIjzzxnyijgqMpPMtsxYPVv7tHMjiasvMjbPSyizZu0IZcaJmSU/Ad180GU+bk3VP9fKvSCqUX9de9V6UHOpEYgvwdJUdW6sJqc2avpPlXto1JaxEYFBG0DZMg1mPU21lGiYr9EhEsfnV5488xWrtSr5Wp/4at1MGQ5/LOA1uKFGdH1tsZ4ql9DWk+AKb6Uz6mcizJnDF+x7PjwwAF2eR3g+lQWduDEKQW0Zdl6wOxTwJsPyb1/QfYIA6z/+HREoXzJUDfBdmLz6EDM2FtI8FFvZxFdSBOaF75bDBVUjOhwriV/GWv2ofYTa2tbEzbDhXgKkbwuR7H621/4Y47o/WtaWgSjR8f/DlNXFS+fGjJIP4rYuz8NJKK5uGc3246Zz9tBuAYB/F+mPJ+G0C/6FD8Gv5U1ZnoJQMWE2PahmFmhi8CtZGTyA87yWHh4lFQ8cZ0SLssvqGIo38rtmMf5o3oy2E0O/imkn/4avqlI3XNzA+CbLl2QGI5tVW1a7SNAyPJ7A2XWT1mL2DNOtb884WupqZbG2wWCFbSfYl8lQWYYWT99zSDm4oGh2rmx8kPhw6KeuYE1HWzN1G2wrmY2hLlhpGceziVnRaMvv60dZAO0gnynV+7Lbidgg7J2pNzkehOQ2cvC1Dql5a/mJZFIoCjBuOD9Yq2dzBtg=
+  password:
+    secure: ufsOvUNdVdPQIWyHCKu3MO6Sv5tskOaHtmdq2f4piXF1I08aR1EhvuKQ0m96Jj1J+Gs2nKKVdfO67qgxVYF0Ik7FMj1YvfiWCaOt20tvGykRPSh4jFuGUiPcuKOHF+igtGTZWAT/Zc9N1jhG7BC4PPi6tocXXHao93CYlC656Epmgbnwj1V8g1urJY1oh0odnribN7Yhb4Uj+pDnRCVKmmaa3AzKF6Fi7JCIib1rVOy8FJJQAW1rAw1Zqsovm2p/lizTTYxW/AhU+46OnzKeJwNEteEr8miJPhtcbpIza5M6uTlnSV2QpI4XwQblF70z/eL560bN6nZrKIh4+/eMwlDkLdV28p/2osS13afAdESVyrcJv2pX0Epsi5R+ZOb4d4vJMo20FidqChtLzNXworWv9X/tncywzMllZ7xcH2oLQm/zZ5j2rif1/T8fBd1AFGBv+6FTtz6rm/h+EGu9tw3WZyJtbl/ZC6x5Ha+XMTtih809TUihMcuy6wTGMY6+Zae+ENzAY9rmQTT+Gz4tOWGiI6v/ElO3/v/Lim35ja4q7GjrxsGJUIZtgaG5AZvOt0i/b5WYd13GpBgMrqnnISutuyHYV/ptZS3+cCsOCoHYxyl94DvIPS+BqNpYvrUmc81APnVewBaLvB3PAsY/wRWSUtCUtX5wSgcxJAYxpIw=
+  on:
+    tags: true
