@@ -1,9 +1,12 @@
-|test| |coverage|
+|test| |coverage| |documentation|
 
 .. |test| image:: https://travis-ci.org/NOhs/mgen.svg?branch=master
-    :target: https://travis-ci.org/NOhs/mgen 
+    :target: https://travis-ci.org/NOhs/mgen
 .. |coverage| image:: https://coveralls.io/repos/github/NOhs/mgen/badge.svg
     :target: https://coveralls.io/github/NOhs/mgen
+.. |documentation| image:: https://readthedocs.org/projects/mgen/badge/?version=latest
+    :target: http://mgen.readthedocs.io/en/latest/?badge=latest
+    :alt: Documentation Status
 
 
 MGen: Convenient matrix generation functions
