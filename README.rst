@@ -1,4 +1,4 @@
-|test| |coverage| |documentation|
+|test| |coverage| |documentation| |pypi|
 
 .. |test| image:: https://travis-ci.org/NOhs/mgen.svg?branch=master
     :target: https://travis-ci.org/NOhs/mgen
@@ -7,7 +7,8 @@
 .. |documentation| image:: https://readthedocs.org/projects/mgen/badge/?version=latest
     :target: http://mgen.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
-
+.. |pypi| image:: https://badge.fury.io/py/mgen.svg
+    :target: https://badge.fury.io/py/mgen
 
 MGen: Convenient matrix generation functions
 ============================================
