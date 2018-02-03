@@ -1,0 +1,19 @@
+language: python
+python:
+- '3.6'
+install:
+- pip install coveralls
+script:
+- coverage run --source mgen setup.py test
+- coverage report -m
+after_success:
+- coveralls
+deploy:
+  skip_cleanup: true
+  provider: pypi
+  on:
+    tags: true
+  user:
+    secure: hBJj0HSuQol/01wcyNNi1vjoNoqXt8qdAnUvw8DXtM3fCPWel81J4z/u62VvZgy7J/CeIXAkcafe4fMEzIg2m6HYfCpMmtZiFhgv8irDypcczs9z+ndStjzerxE2X9z+jFSnCSAo6fPuKDIvnIWoUDu0uaXb57EHHE9SwHfN7bOkIsavRnSMY2S7wTEhHB2leC1hTC5I0BmcyD7LPtnJbhRORqxx2Woy/pmDS1gZzbZxNUTniJvE6Y7PRVQH+AWA6vQeySvD/TElWTXHArsWzktf/UbDBdTc1InCiyaKBNCl1QU2mOPsikjq25RhdFOIcFOPMiKrR99jkuvHgmEIty+XP/sBsmAY1YFREo+ggMH2JKKgd8HIXWB7fzRhOFh/Cd2CchcWKRMC9IypLuzK/IabKqjwoVyQuyQiOnO+07M+c7dh+SR6W/juF+l7AaX3/kDzM2JbaErdkHAR7CUy7mtrwKzXTP2ZX7XtH3bfwnCoqZaa+7K+zjq5QbYZ0vacPOEKsGAfpoK0MAyAfK6WHPY9jV0lfh63jxGhkTe8ygP49b4Xhn9lLzMwrLXYOwP1CY9VHaIOPshuIyhlzokfBksR7+s5+8I7nXQAQW+Xhv2jXWHcJr1zWNdtWqXJqJm3e2liGp+NTNKPKZoh3Gue1RMaYH26lieQcKSR79Vu/to=
+  password:
+    secure: WtlQ8L3boPmLt/GWGayYXyxEZRBbRMfeHqWrNOFzW5HaHJq2fgMvzD9adTbm97oqDsK2/pdCrWGg0NxSqvSMNv1psxSKaX7S6VDpS5HwXyFMWcaW/PS4TYYJEBsdtZNNI8TLTLMtoxdac1BD/S+ufTIAa6zXFbOM+Wv1L1wJ+IS5FP8Yeqdoqljh+ZHCZn31Ehpgx/HHEEt7n7SkPng+5RhbkzrGxXSVEme0yPmPYuTEP20YH3XWoYjWNSzD0Lx3890kf2ykiXDYiq3qUR58FDCs2f8R84ZK2uLja4HjuPG2xF+/Obf8vhWgDRzCQj03BXvSppftHFk+SOCEb5F2VntE+QjUjT1kyJJnJ3TUlFu9NkC3EhA+osI7MP3h7XL14du+X4kJfhOFkoTTdCwHfr86/FRslpWbVsR2xMUFxPWk1FDoR6yRQk8ZHvDb2S7ScNKfEz6QRNIYnZdI8RYlCBbulTyWGmlW5GVL9v5XfteHAPRZr+BnbNmjKSsC7CVF/9yhAmE6/CDnwhvAaLpwdUmfv9eJWMcOL5ZmFY6uCy1qqsSLbvBCVCh+ROHs1c1C87oH5llyFs0YnUsejXcUJYEfuAt6MaDppxrxv8iDE2qbZj18FV46DzS2QZVJEySiEIdZsG5qLUcFkrcq03eat/zUPsKRvR+txvOfANiOuZ0=

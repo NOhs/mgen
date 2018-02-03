@@ -1,0 +1,8 @@
+__pycache__
+.vscode
+*.egg*
+.coverage
+docs/_*
+dist
+ChangeLog
+AUTHORS
