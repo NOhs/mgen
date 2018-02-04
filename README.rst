@@ -1,4 +1,4 @@
-|test| |coverage| |documentation| |pypi|
+|test| |coverage| |documentation| |pypi| |license|
 
 .. |test| image:: https://travis-ci.org/NOhs/mgen.svg?branch=master
     :target: https://travis-ci.org/NOhs/mgen
@@ -9,6 +9,9 @@
     :alt: Documentation Status
 .. |pypi| image:: https://badge.fury.io/py/mgen.svg
     :target: https://badge.fury.io/py/mgen
+    
+.. |license| image:: https://img.shields.io/badge/License-BSD%203--Clause-blue.svg
+    :target: https://opensource.org/licenses/BSD-3-Clause
 
 MGen: Convenient matrix generation functions
 ============================================
