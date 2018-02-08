@@ -115,7 +115,7 @@ class TestRotations(TestCase):
             rotation_from_angles(angles_a, 'YZY'))
 
     def test_rotation_nd(self):
-        for rand1 in np.random.uniform(-np.pi, np.pi, 10000):
+        for rand1 in np.random.uniform(-np.pi, np.pi, 1000):
             # Test 3D case
             is_close(rotation_around_z(rand1), rotation_from_angle_and_plane(rand1, (1,0,0), (0,1,0)))
             # Test normalisation of first parameter
