@@ -13,14 +13,25 @@ mgen package documentation
 The mgen package offers functions to generate plain rotation matrices using either of
 the following options:
 
-- Give three Euler / Tait-Bryan angles
-- Give a rotation axis and an angle
-- Give an angle and a base axis around which to rotate (x, y, z)
+- (2D) Give an angle
+- (3D) Give three Euler / Tait-Bryan angles
+- (3D) Give a rotation axis and an angle
+- (3D) Give an angle and a base axis around which to rotate (x, y, z)
 
 Simple usage examples
 ---------------------
 
-The following code snippet shows how to use the three different options::
+The following code snippet show how to use the 2D function::
+
+    >>> import numpy as np
+    >>> np.set_printoptions(suppress=True)
+    >>> from mgen import rotation_from_angle
+
+    >>> matrix = rotation_from_angle(np.pi/2)
+    >>> matrix.dot([1, 0])
+    # array([0., 1.])
+
+The following code snippet shows how to use the three different 3D options::
 
     >>> import numpy as np
     >>> np.set_printoptions(suppress=True)
@@ -43,6 +54,14 @@ The following code snippet shows how to use the three different options::
 
 Module documentation
 --------------------
+
+2D rotation matrix functions
+############################
+
+.. autofunction:: mgen.rotation_from_angle
+
+3D rotation matrix functions
+############################
 
 .. autofunction:: mgen.rotation_from_angles
 
