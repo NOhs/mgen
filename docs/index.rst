@@ -17,6 +17,8 @@ the following options:
 - Give a rotation axis and an angle
 - Give an angle and a base axis around which to rotate (x, y, z)
 
+It also offers functions to create n-dimensional rotations.
+
 Simple usage examples
 ---------------------
 
@@ -28,6 +30,7 @@ The following code snippet shows how to use the three different options::
     >>> from mgen import rotation_around_axis
     >>> from mgen import rotation_from_angles
     >>> from mgen import rotation_around_x
+    >>> from mgen import rotation_from_angle_and_plane
 
     >>> matrix = rotation_from_angles([np.pi/2, 0, 0], 'XYX')
     >>> matrix.dot([0, 1, 0])
@@ -41,6 +44,12 @@ The following code snippet shows how to use the three different options::
     >>> matrix.dot([0, 1, 0])
     array([0., 0., 1.])
 
+    >>> matrix = rotation_from_angle_and_plane(np.pi/2, (0, 1, 0, 0), (0, 0, 1, 0))
+    >>> matrix.dot([0, 1, 0, 0])
+    # array([0., 0., 1., 0.])
+
+
+
 Module documentation
 --------------------
 
@@ -53,4 +62,6 @@ Module documentation
 .. autofunction:: mgen.rotation_around_y
 
 .. autofunction:: mgen.rotation_around_z
+
+.. autofuction:: mgen.rotation_from_angle_and_plane
 

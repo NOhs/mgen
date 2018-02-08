@@ -1,4 +1,5 @@
 from unittest import TestCase
+import random
 import numpy as np
 from math import cos, sin
 
@@ -19,6 +20,7 @@ from mgen import rotation_around_x
 from mgen import rotation_around_y
 from mgen import rotation_around_z
 from mgen import rotation_around_axis
+from mgen import rotation_from_angle_and_plane
 
 def is_close(m1, m2):
     np.testing.assert_allclose(m1, m2, atol=1.e-7)
@@ -111,3 +113,33 @@ class TestRotations(TestCase):
         np.testing.assert_allclose(
             rotation_from_angles(angles_t, 'YZY'),
             rotation_from_angles(angles_a, 'YZY'))
+
+    def test_rotation_nd(self):
+        for rand1 in np.random.uniform(-np.pi, np.pi, 10000):
+            # Test 3D case
+            is_close(rotation_around_z(rand1), rotation_from_angle_and_plane(rand1, (1,0,0), (0,1,0)))
+            # Test normalisation of first parameter
+            is_close(rotation_around_z(rand1), rotation_from_angle_and_plane(rand1, (2,0,0), (0,1,0)))
+            # Test normalisation of second parameter
+            is_close(rotation_around_z(rand1), rotation_from_angle_and_plane(rand1, (1,0,0), (0,2,0)))
+            # Test normalisation of both parameters
+            is_close(rotation_around_z(rand1), rotation_from_angle_and_plane(rand1, (2,0,0), (0,2,0)))
+
+            is_close(rotation_around_x(rand1), rotation_from_angle_and_plane(rand1, (0,1,0), (0,0,1)))
+            is_close(rotation_around_y(rand1), rotation_from_angle_and_plane(rand1, (0,0,1), (1,0,0)))
+
+            # Test generic properties of higher dimensional rotations
+
+            # create two perpendicular random vectors
+            dimension = random.randint(4,100)
+            v1 = np.random.uniform(-1., 1., dimension)
+            v1 = v1/np.linalg.norm(v1)
+            v2 = np.random.uniform(-1., 1., dimension)
+            v2 = v2/np.linalg.norm(v2)
+            v2 = v2 - v2.dot(v1)*v1
+
+            m = rotation_from_angle_and_plane(rand1, v1, v2)
+            m_inv = rotation_from_angle_and_plane(-rand1, v1, v2)
+            is_close(m.dot(m.T), np.eye(dimension))
+            self.assertAlmostEqual(np.linalg.det(m), 1.0)
+            is_close(m, m_inv.T)
