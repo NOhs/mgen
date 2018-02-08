@@ -19,6 +19,7 @@ from mgen import rotation_around_x
 from mgen import rotation_around_y
 from mgen import rotation_around_z
 from mgen import rotation_around_axis
+from mgen import rotation_from_angle
 
 def is_close(m1, m2):
     np.testing.assert_allclose(m1, m2, atol=1.e-7)
@@ -33,6 +34,10 @@ def test_matrix_generation(func, single_rotations, name):
         is_close(rot_m(rand1, rand2, rand3), rot_conv(rand1, rand2, rand3))
 
 class TestRotations(TestCase):
+    def test_rotation_2d(self):
+        is_close(rotation_from_angle(0), np.eye(2))
+        is_close(rotation_from_angle(np.pi/2), [[0, -1], [1, 0]])
+        is_close(rotation_from_angle(np.pi), [[-1, 0], [0, -1]])
     def test_rotation_x(self):
         is_close(rotation_around_x(0), np.eye(3))
         is_close(rotation_around_x(np.pi/2), [[1, 0, 0], [0, 0, -1], [0, 1, 0]])
