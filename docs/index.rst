@@ -90,5 +90,5 @@ Module documentation
 nD rotation matrix functions
 ############################
 
-.. autofuction:: mgen.rotation_from_angle_and_plane
+.. autofunction:: mgen.rotation_from_angle_and_plane
 
