@@ -37,7 +37,7 @@ orthogonal vectors that span the plane of rotation.
 Trivial example usage
 ----------------------
 
-Below you see three easy ways to use mgen to generate rotation matrices. For further
+Below you see examples of how to use mgen to generate rotation matrices. For further
 documentation please have a look here: https://mgen.readthedocs.io
 
 .. code:: python
