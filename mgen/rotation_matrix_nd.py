@@ -14,10 +14,12 @@ def rotation_from_angle_and_plane(angle, vector1, vector2, abs_tolerance_orthogo
 
     .. math::
 
-        M = 𝟙 + (\cos\alpha-1)\cdot(v_1\otimes v_1 + v_2\otimes v_2) - \sin\alpha\cdot(v_1\otimes v_2 - v_2\otimes v_1)
+        M = 𝟙 + (\cos\\alpha-1)\cdot(v_1\otimes v_1 + v_2\otimes v_2) - \sin\\alpha\cdot(v_1\otimes v_2 - v_2\otimes v_1)
 
-    with :math:`M` being the returned matrix, :math:`v_1`and :math:`v_2` being the two
-    given vectors and :math:`alpha` being the given angle.
+    with :math:`M` being the returned matrix, :math:`v_1` and :math:`v_2` being the two
+    given vectors and :math:`\\alpha` being the given angle. It differs from the formula
+    on wikipedia in that it is the transposed matrix to yield results that are consistent
+    with the 2D and 3D cases.
 
     :param angle: the angle by which to rotate
     :type angle: float
