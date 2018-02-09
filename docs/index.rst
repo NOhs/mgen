@@ -13,16 +13,26 @@ mgen package documentation
 The mgen package offers functions to generate plain rotation matrices using either of
 the following options:
 
-- Give three Euler / Tait-Bryan angles
-- Give a rotation axis and an angle
-- Give an angle and a base axis around which to rotate (x, y, z)
-
-It also offers functions to create n-dimensional rotations.
+- (2D) Give an angle
+- (3D) Give three Euler / Tait-Bryan angles
+- (3D) Give a rotation axis and an angle
+- (3D) Give an angle and a base axis around which to rotate (x, y, z)
+- (nD) Give an angle and a pair of orthogonal vectors that span a plane
 
 Simple usage examples
 ---------------------
 
-The following code snippet shows how to use the three different options::
+The following code snippet show how to use the 2D function::
+
+    >>> import numpy as np
+    >>> np.set_printoptions(suppress=True)
+    >>> from mgen import rotation_from_angle
+
+    >>> matrix = rotation_from_angle(np.pi/2)
+    >>> matrix.dot([1, 0])
+    # array([0., 1.])
+
+The following code snippet shows how to use the three different 3D options::
 
     >>> import numpy as np
     >>> np.set_printoptions(suppress=True)
@@ -30,7 +40,6 @@ The following code snippet shows how to use the three different options::
     >>> from mgen import rotation_around_axis
     >>> from mgen import rotation_from_angles
     >>> from mgen import rotation_around_x
-    >>> from mgen import rotation_from_angle_and_plane
 
     >>> matrix = rotation_from_angles([np.pi/2, 0, 0], 'XYX')
     >>> matrix.dot([0, 1, 0])
@@ -44,6 +53,13 @@ The following code snippet shows how to use the three different options::
     >>> matrix.dot([0, 1, 0])
     array([0., 0., 1.])
 
+Finally, here is an example of how to create an n-dimensional rotation::
+
+    >>> import numpy as np
+    >>> np.set_printoptions(suppress=True)
+
+    >>> from mgen import rotation_from_angle_and_plane
+
     >>> matrix = rotation_from_angle_and_plane(np.pi/2, (0, 1, 0, 0), (0, 0, 1, 0))
     >>> matrix.dot([0, 1, 0, 0])
     # array([0., 0., 1., 0.])
@@ -52,6 +68,14 @@ The following code snippet shows how to use the three different options::
 
 Module documentation
 --------------------
+
+2D rotation matrix functions
+############################
+
+.. autofunction:: mgen.rotation_from_angle
+
+3D rotation matrix functions
+############################
 
 .. autofunction:: mgen.rotation_from_angles
 
@@ -62,6 +86,9 @@ Module documentation
 .. autofunction:: mgen.rotation_around_y
 
 .. autofunction:: mgen.rotation_around_z
+
+nD rotation matrix functions
+############################
 
 .. autofuction:: mgen.rotation_from_angle_and_plane
 
