@@ -1,5 +1,3 @@
-import sys
-sys.path.append("../mgen/")
 import numpy as np
 
 from mgen.rotation_matrix_3d import random_rotation
