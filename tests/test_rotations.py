@@ -146,5 +146,7 @@ class TestRotations(TestCase):
             
         with self.assertRaises(ValueError):
             rotation_from_angle_and_plane(0., (1,0,0), (0,1,0,0))
+        with self.assertRaises(ValueError):
             rotation_from_angle_and_plane(0., (1,0,0,0), (0,1,0))
+        with self.assertRaises(ValueError):
             rotation_from_angle_and_plane(0., (1,0,0), (1,0,0))
