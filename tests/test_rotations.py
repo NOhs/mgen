@@ -143,3 +143,8 @@ class TestRotations(TestCase):
             is_close(m.dot(m.T), np.eye(dimension))
             self.assertAlmostEqual(np.linalg.det(m), 1.0)
             is_close(m, m_inv.T)
+            
+        with self.assertRaises(ValueError):
+            rotation_from_angle_and_plane(0., (1,0,0), (0,1,0,0))
+            rotation_from_angle_and_plane(0., (1,0,0,0), (0,1,0))
+            rotation_from_angle_and_plane(0., (1,0,0), (1,0,0))
