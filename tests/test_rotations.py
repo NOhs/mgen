@@ -1,4 +1,5 @@
 from unittest import TestCase
+import random
 import numpy as np
 from math import cos, sin
 
@@ -19,6 +20,8 @@ from mgen import rotation_around_x
 from mgen import rotation_around_y
 from mgen import rotation_around_z
 from mgen import rotation_around_axis
+from mgen import rotation_from_angle_and_plane
+from mgen import rotation_from_angle
 
 def is_close(m1, m2):
     np.testing.assert_allclose(m1, m2, atol=1.e-7)
@@ -33,6 +36,10 @@ def test_matrix_generation(func, single_rotations, name):
         is_close(rot_m(rand1, rand2, rand3), rot_conv(rand1, rand2, rand3))
 
 class TestRotations(TestCase):
+    def test_rotation_2d(self):
+        is_close(rotation_from_angle(0), np.eye(2))
+        is_close(rotation_from_angle(np.pi/2), [[0, -1], [1, 0]])
+        is_close(rotation_from_angle(np.pi), [[-1, 0], [0, -1]])
     def test_rotation_x(self):
         is_close(rotation_around_x(0), np.eye(3))
         is_close(rotation_around_x(np.pi/2), [[1, 0, 0], [0, 0, -1], [0, 1, 0]])
@@ -111,3 +118,42 @@ class TestRotations(TestCase):
         np.testing.assert_allclose(
             rotation_from_angles(angles_t, 'YZY'),
             rotation_from_angles(angles_a, 'YZY'))
+
+    def test_rotation_nd(self):
+        for rand1 in np.random.uniform(-np.pi, np.pi, 100):
+            # Test 2D case
+            is_close(rotation_from_angle(rand1), rotation_from_angle_and_plane(rand1, (1,0), (0,1)))
+            # Test 3D case
+            is_close(rotation_around_z(rand1), rotation_from_angle_and_plane(rand1, (1,0,0), (0,1,0)))
+            # Test normalisation of first parameter
+            is_close(rotation_around_z(rand1), rotation_from_angle_and_plane(rand1, (2,0,0), (0,1,0)))
+            # Test normalisation of second parameter
+            is_close(rotation_around_z(rand1), rotation_from_angle_and_plane(rand1, (1,0,0), (0,2,0)))
+            # Test normalisation of both parameters
+            is_close(rotation_around_z(rand1), rotation_from_angle_and_plane(rand1, (2,0,0), (0,2,0)))
+
+            is_close(rotation_around_x(rand1), rotation_from_angle_and_plane(rand1, (0,1,0), (0,0,1)))
+            is_close(rotation_around_y(rand1), rotation_from_angle_and_plane(rand1, (0,0,1), (1,0,0)))
+
+            # Test generic properties of higher dimensional rotations
+
+            # create two perpendicular random vectors
+            dimension = random.randint(4,100)
+            v1 = np.random.uniform(-1., 1., dimension)
+            v1 = v1/np.linalg.norm(v1)
+            v2 = np.random.uniform(-1., 1., dimension)
+            v2 = v2/np.linalg.norm(v2)
+            v2 = v2 - v2.dot(v1)*v1
+
+            m = rotation_from_angle_and_plane(rand1, v1, v2)
+            m_inv = rotation_from_angle_and_plane(-rand1, v1, v2)
+            is_close(m.dot(m.T), np.eye(dimension))
+            self.assertAlmostEqual(np.linalg.det(m), 1.0)
+            is_close(m, m_inv.T)
+            
+        with self.assertRaises(ValueError):
+            rotation_from_angle_and_plane(0., (1,0,0), (0,1,0,0))
+        with self.assertRaises(ValueError):
+            rotation_from_angle_and_plane(0., (1,0,0,0), (0,1,0))
+        with self.assertRaises(ValueError):
+            rotation_from_angle_and_plane(0., (1,0,0), (1,0,0))
