@@ -16,7 +16,7 @@ the following options:
 - (2D) Give an angle
 - (3D) Give three Euler / Tait-Bryan angles
 - (3D) Give a rotation axis and an angle
-- (3D) Give an angle and a base axis around which to rotate (x, y, z)
+- (3D) Give an angle and a cartesian coordinate axis around which to rotate (x, y, z)
 - (nD) Give an angle and a pair of orthogonal vectors that span a plane
 
 Simple usage examples
