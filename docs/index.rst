@@ -53,7 +53,7 @@ The following code snippet shows how to use the three different 3D options::
     >>> matrix.dot([0, 1, 0])
     array([0., 0., 1.])
 
-Finally, here is an example of how to create an n-dimensional rotation::
+Here is an example of how to create an n-dimensional rotation::
 
     >>> import numpy as np
     >>> np.set_printoptions(suppress=True)
@@ -64,6 +64,18 @@ Finally, here is an example of how to create an n-dimensional rotation::
     >>> matrix.dot([0, 1, 0, 0])
     # array([0., 0., 1., 0.])
 
+Finally an example of a nxn random matrix :math:`\in O(n)` which can be used to rotate a vector with uniform distribution on the unit n-sphere
+    >>> from mgen.random_rotation import random_rotation
+
+    >>> n = 6
+    >>> matrices = np.array([random_rotation(n) for _ in range(100)])
+    >>> vector = np.zeros(n)
+    >>> vector[0] = 1.0
+
+    # vectors of length one should keep length one
+    >>> rotated = np.matmul(matrices,vector)
+    >>> lengths = np.sum(rotated*rotated, axis=1)
+    >>> print("Minimum length: %.5f; Maximum length: %.5f"%(np.amin(lengths),np.amax(lengths)))
 
 
 Module documentation
@@ -92,3 +104,4 @@ nD rotation matrix functions
 
 .. autofunction:: mgen.rotation_from_angle_and_plane
 
+.. autofunction:: mgen.random_rotation

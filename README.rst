@@ -50,6 +50,7 @@ documentation please have a look here: https://mgen.readthedocs.io
     from mgen import rotation_around_x
     from mgen import rotation_from_angle_and_plane
     from mgen import rotation_from_angle
+    from mgen import random_rotation
 
     # 2D example
     matrix = rotation_from_angle(np.pi/2)
@@ -73,3 +74,6 @@ documentation please have a look here: https://mgen.readthedocs.io
     matrix = rotation_from_angle_and_plane(np.pi/2, (0, 1, 0, 0), (0, 0, 1, 0))
     matrix.dot([0, 1, 0, 0])
     # array([0., 0., 1., 0.])
+
+    # n-dimensional random matrix O(n)
+    matrix = random_rotation(n)
