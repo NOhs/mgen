@@ -42,8 +42,8 @@ def rotation_from_angle_and_plane(angle, vector1, vector2, abs_tolerance=1e-10):
         raise ValueError(
             'Given vectors must have the same length but are: {}, {}'.format(len(vector1), len(vector2)))
 
-    vector1 = np.asarray(vector1)
-    vector2 = np.asarray(vector2)
+    vector1 = np.asarray(vector1, dtype=np.float)
+    vector2 = np.asarray(vector2, dtype=np.float)
     
     vector1_length = np.linalg.norm(vector1)
     if math.isclose(vector1_length, 0., abs_tol=abs_tolerance):
