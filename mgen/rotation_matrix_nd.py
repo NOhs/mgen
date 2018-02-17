@@ -14,7 +14,7 @@ def rotation_from_angle_and_plane(angle, vector1, vector2, abs_tolerance_orthogo
 
     .. math::
 
-        M = One + (\cos\\alpha-1)\cdot(v_1\otimes v_1 + v_2\otimes v_2) - \sin\\alpha\cdot(v_1\otimes v_2 - v_2\otimes v_1)
+        M = 𝟙 + (\cos\\alpha-1)\cdot(v_1\otimes v_1 + v_2\otimes v_2) - \sin\\alpha\cdot(v_1\otimes v_2 - v_2\otimes v_1)
 
     with :math:`M` being the returned matrix, :math:`v_1` and :math:`v_2` being the two
     given vectors and :math:`\\alpha` being the given angle. It differs from the formula
