@@ -89,10 +89,10 @@ def random_matrix(n):
     
     a[0] = a[0]/np.linalg.norm(a[0])
     
-    iter = n*(n-1)//2
+    max_iter = n*(n-1)//2
     base = 0
     mod = base + 1
-    for i in range(0,iter):	
+    for i in range(0,max_iter):
         a[mod] = a[mod] - a[base]*np.dot(a[mod],a[base])
         a[mod] = a[mod]/np.linalg.norm(a[mod])
         
