@@ -75,5 +75,5 @@ documentation please have a look here: https://mgen.readthedocs.io
     matrix.dot([0, 1, 0, 0])
     # array([0., 0., 1., 0.])
 
-    # n-dimensional random matrix O(n)
-    matrix = random_matrix(n)
+    # n-dimensional random matrix O(n), e.g. n=27
+    matrix = random_matrix(27)
