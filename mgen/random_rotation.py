@@ -14,7 +14,7 @@ def random_rotation(n):
 	:rtype: a nxn :any:`numpy.ndarray`
 	'''
     if n < 2:
-        raise ValueError('n must be greater than 1 but is ' + n + '.')
+        raise ValueError('n must be greater than 1 but is ' + str(n) + '.')
     
     a = np.random.randn(n,n)
     
