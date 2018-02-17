@@ -64,7 +64,9 @@ Here is an example of how to create an n-dimensional rotation::
     >>> matrix.dot([0, 1, 0, 0])
     # array([0., 0., 1., 0.])
 
-Finally an example of a nxn random matrix :math:`\in O(n)` which can be used to rotate a vector with uniform distribution on the unit n-sphere
+Finally an example of a nxn random matrix :math:`\in O(n)` which can be used to rotate a vector 
+with uniform distribution on the unit n-sphere::
+
     >>> from mgen.rotation_matrix_nd import random_matrix
 
     >>> n = 6

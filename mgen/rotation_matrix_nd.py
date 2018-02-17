@@ -78,10 +78,10 @@ def random_matrix(n):
     "A statistical model for random rotations" doi:10.1016/j.jmva.2005.03.009
     
     :param n: dimension of space in which the rotation operates
-	:type n: int
-	:returns: rotation matrix
-	:rtype: a nxn :any:`numpy.ndarray`
-	'''
+    :type n: int
+    :returns: rotation matrix
+    :rtype: a nxn :any:`numpy.ndarray`
+    '''
     if n < 2:
         raise ValueError('n must be greater than 1 but is ' + str(n) + '.')
     
