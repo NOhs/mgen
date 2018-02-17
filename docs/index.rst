@@ -65,10 +65,10 @@ Here is an example of how to create an n-dimensional rotation::
     # array([0., 0., 1., 0.])
 
 Finally an example of a nxn random matrix :math:`\in O(n)` which can be used to rotate a vector with uniform distribution on the unit n-sphere
-    >>> from mgen.random_rotation import random_rotation
+    >>> from mgen.rotation_matrix_nd import random_matrix
 
     >>> n = 6
-    >>> matrices = np.array([random_rotation(n) for _ in range(100)])
+    >>> matrices = np.array([random_matrix(n) for _ in range(100)])
     >>> vector = np.zeros(n)
     >>> vector[0] = 1.0
 
@@ -104,4 +104,4 @@ nD rotation matrix functions
 
 .. autofunction:: mgen.rotation_from_angle_and_plane
 
-.. autofunction:: mgen.random_rotation
+.. autofunction:: mgen.random_matrix

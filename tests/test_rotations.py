@@ -22,7 +22,7 @@ from mgen import rotation_around_z
 from mgen import rotation_around_axis
 from mgen import rotation_from_angle_and_plane
 from mgen import rotation_from_angle
-from mgen import random_rotation
+from mgen import random_matrix
 
 def is_close(m1, m2):
     np.testing.assert_allclose(m1, m2, atol=1.e-7)
@@ -159,11 +159,11 @@ class TestRotations(TestCase):
         with self.assertRaises(ValueError):
             rotation_from_angle_and_plane(0., (1,0,0), (1,0,0))
 
-    def test_random_rotation(self):
+    def test_random_matrix(self):
         for x in range(2,7):
             vecx = np.zeros(x, dtype=np.float64)
             vecx[0] = 1.0
-            m = random_rotation(x)
+            m = random_matrix(x)
             rotx = np.matmul(m,vecx)
             lengthx = np.sum(rotx*rotx)
             self.assertAlmostEqual(lengthx, 1.0)
