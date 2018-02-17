@@ -158,7 +158,11 @@ class TestRotations(TestCase):
             rotation_from_angle_and_plane(0., (1,0,0,0), (0,1,0))
         with self.assertRaises(ValueError):
             rotation_from_angle_and_plane(0., (1,0,0), (1,0,0))
-
+        with self.assertRaises(ValueError):
+            rotation_from_angle_and_plane(0., (0,0), (1,0))
+        with self.assertRaises(ValueError):
+            rotation_from_angle_and_plane(0., (1,0), (0,0))
+            
     def test_random_matrix(self):
         for x in range(2,7):
             vecx = np.zeros(x, dtype=np.float64)

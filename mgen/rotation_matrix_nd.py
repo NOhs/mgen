@@ -4,7 +4,7 @@ This module contains functions to generate n-D rotation matrices.
 import math
 import numpy as np
 
-def rotation_from_angle_and_plane(angle, vector1, vector2, abs_tolerance_orthogonal_check=1e-10):
+def rotation_from_angle_and_plane(angle, vector1, vector2, abs_tolerance=1e-10):
     '''
     generates an nxn rotation matrix from a given angle and
     a plane spanned by two given orthogonal vectors of length n:
@@ -29,25 +29,38 @@ def rotation_from_angle_and_plane(angle, vector1, vector2, abs_tolerance_orthogo
     :param vector2: the other of the two vectors that span the plane in which to rotate
                     (no normalisation required)
     :type vector2: array like
-    :param abs_tolerance_orthogonal_check: The absolute tolerance to use when checking if vectors are orthogonal.
-                                           Default is 1e-10, but this might be inadequate for your application.
-    :type abs_tolerance_orthogonal_check: float
+    :param abs_tolerance: The absolute tolerance to use when checking if vectors are orthogonal or have length zero.
+                          Default is 1e-10, but this might be inadequate for your application.
+    :type abs_tolerance: float
 
     .. warning:: Make sure that the two given vectors are orthogonal to each other.
 
     :returns: the rotation matrix
     :rtype: an nxn :any:`numpy.ndarray`
     '''
-    vector1 = np.asarray(vector1)/np.linalg.norm(vector1)
-    vector2 = np.asarray(vector2)/np.linalg.norm(vector2)
-
     if len(vector1) != len(vector2):
         raise ValueError(
             'Given vectors must have the same length but are: {}, {}'.format(len(vector1), len(vector2)))
 
-    if not math.isclose(vector1.dot(vector2), 0, abs_tol=abs_tolerance_orthogonal_check):
+    vector1 = np.asarray(vector1, dtype=np.float)
+    vector2 = np.asarray(vector2, dtype=np.float)
+    
+    vector1_length = np.linalg.norm(vector1)
+    if math.isclose(vector1_length, 0., abs_tol=abs_tolerance):
         raise ValueError(
-            'Given vectors are not orthogonal for given numerical tolerance: {:.0e}'.format(abs_tolerance_orthogonal_check))
+            'Given vector1 must have norm greater than zero within given numerical tolerance: {:.0e}'.format(abs_tolerance))
+        
+    vector2_length = np.linalg.norm(vector2)
+    if math.isclose(vector2_length, 0., abs_tol=abs_tolerance):
+        raise ValueError(
+            'Given vector2 must have norm greater than zero within given numerical tolerance: {:.0e}'.format(abs_tolerance))
+    
+    vector1 /= vector1_length
+    vector2 /= vector2_length
+
+    if not math.isclose(vector1.dot(vector2), 0, abs_tol=abs_tolerance):
+        raise ValueError(
+            'Given vectors are not orthogonal for given numerical tolerance: {:.0e}'.format(abs_tolerance))
 
     V = np.outer(vector1, vector1) + np.outer(vector2, vector2)
     W = np.outer(vector1, vector2) - np.outer(vector2, vector1)
