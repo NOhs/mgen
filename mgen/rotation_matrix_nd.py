@@ -71,9 +71,11 @@ def random_matrix(n):
     '''
     Generate a nxn random matrix.
     The distribution of rotations is uniform on the n-sphere.
-    The random matrix is from the O(n) group (not SO(n)) and uses the gram-schmidt algorithm to orthogonalize the random matrix,
+    The random matrix is from the O(n) group (not SO(n)) and uses the
+    gram-schmidt algorithm to orthogonalize the random matrix,
     see http://www.ams.org/notices/200511/what-is.pdf
-    If a rotation from SO(n) is needed, look for: "A statistical model for random rotations" doi:10.1016/j.jmva.2005.03.009
+    If a rotation from SO(n) is needed, look for:
+    "A statistical model for random rotations" doi:10.1016/j.jmva.2005.03.009
     
     :param n: dimension of space in which the rotation operates
 	:type n: int

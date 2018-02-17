@@ -171,3 +171,5 @@ class TestRotations(TestCase):
             rotx = np.matmul(m,vecx)
             lengthx = np.sum(rotx*rotx)
             self.assertAlmostEqual(lengthx, 1.0)
+        with self.assertRaises(ValueError):
+            random_matrix(1)
