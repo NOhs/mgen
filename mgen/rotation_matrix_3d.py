@@ -93,10 +93,9 @@ def rotation_around_z(angle):
          [0, 0, 1]])
 
 
-'''
-Implementation of the different variations of rotation matrices as
-described in https://en.wikipedia.org/wiki/Euler_angles#Rotation_matrix.
-'''
+# Implementation of the different variations of rotation matrices as
+# described in https://en.wikipedia.org/wiki/Euler_angles#Rotation_matrix.
+
 def _generate_matrix_XZX(c1, c2, c3, s1, s2, s3):
     return np.asarray(
         [[ c2                , -c3*s2            ,  s2*s3            ],

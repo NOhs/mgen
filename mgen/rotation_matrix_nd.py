@@ -44,17 +44,17 @@ def rotation_from_angle_and_plane(angle, vector1, vector2, abs_tolerance=1e-10):
 
     vector1 = np.asarray(vector1, dtype=np.float)
     vector2 = np.asarray(vector2, dtype=np.float)
-    
+
     vector1_length = np.linalg.norm(vector1)
     if math.isclose(vector1_length, 0., abs_tol=abs_tolerance):
         raise ValueError(
             'Given vector1 must have norm greater than zero within given numerical tolerance: {:.0e}'.format(abs_tolerance))
-        
+
     vector2_length = np.linalg.norm(vector2)
     if math.isclose(vector2_length, 0., abs_tol=abs_tolerance):
         raise ValueError(
             'Given vector2 must have norm greater than zero within given numerical tolerance: {:.0e}'.format(abs_tolerance))
-    
+
     vector1 /= vector1_length
     vector2 /= vector2_length
 
@@ -76,7 +76,7 @@ def random_matrix(n):
     see http://www.ams.org/notices/200511/what-is.pdf
     If a rotation from SO(n) is needed, look for:
     "A statistical model for random rotations" doi:10.1016/j.jmva.2005.03.009
-    
+
     :param n: dimension of space in which the rotation operates
     :type n: int
     :returns: rotation matrix
@@ -84,18 +84,18 @@ def random_matrix(n):
     '''
     if n < 2:
         raise ValueError('n must be greater than 1 but is ' + str(n) + '.')
-    
+
     a = np.random.randn(n,n)
-    
+
     a[0] = a[0]/np.linalg.norm(a[0])
-    
+
     max_iter = n*(n-1)//2
     base = 0
     mod = base + 1
-    for i in range(0,max_iter):
+    for _ in range(0,max_iter):
         a[mod] = a[mod] - a[base]*np.dot(a[mod],a[base])
         a[mod] = a[mod]/np.linalg.norm(a[mod])
-        
+
         if mod < n-1:
             mod += 1
         else:
