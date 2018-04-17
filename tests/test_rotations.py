@@ -136,6 +136,9 @@ class TestRotations(TestCase):
             is_close(rotation_around_x(rand1), rotation_from_angle_and_plane(rand1, (0,1,0), (0,0,1)))
             is_close(rotation_around_y(rand1), rotation_from_angle_and_plane(rand1, (0,0,1), (1,0,0)))
 
+            # Test non orthogonal vectors
+            is_close(rotation_around_x(rand1), rotation_from_angle_and_plane(rand1, (0, 1, 1), (0, 1, 2)))
+
             # Test generic properties of higher dimensional rotations
 
             # create two perpendicular random vectors
@@ -151,7 +154,7 @@ class TestRotations(TestCase):
             is_close(m.dot(m.T), np.eye(dimension))
             self.assertAlmostEqual(np.linalg.det(m), 1.0)
             is_close(m, m_inv.T)
-            
+
         with self.assertRaises(ValueError):
             rotation_from_angle_and_plane(0., (1,0,0), (0,1,0,0))
         with self.assertRaises(ValueError):
@@ -162,7 +165,7 @@ class TestRotations(TestCase):
             rotation_from_angle_and_plane(0., (0,0), (1,0))
         with self.assertRaises(ValueError):
             rotation_from_angle_and_plane(0., (1,0), (0,0))
-            
+
     def test_random_matrix(self):
         for x in range(2,7):
             vecx = np.zeros(x, dtype=np.float64)
