@@ -19,6 +19,8 @@
 MGen: Convenient matrix generation functions
 ============================================
 
+Motivation
+----------
 Python and its most popular packages do not offer out-of-the-box convenient
 functions to generate rotation matrices. While there are other projects
 that offer rotation and vector classes, or offer rotations via the use of quaternions,
@@ -30,6 +32,8 @@ https://stackoverflow.com/questions/6802577/rotation-of-3d-vector). However,
 everybody implementing their own version of the same thing can hardly be seen as
 ideal.
 
+In short
+--------
 Therefore, this package provides simple functions to generate rotation matrices
 in 2d for a given angle or in 3d for a given axis and angle, or for three given
 angles (proper Euler angles or Tait-Bryan angles).
@@ -39,7 +43,6 @@ orthogonal vectors that span the plane of rotation.
 
 Trivial example usage
 ----------------------
-
 Below you see examples of how to use mgen to generate rotation matrices. For further
 documentation please have a look here: https://mgen.readthedocs.io
 
