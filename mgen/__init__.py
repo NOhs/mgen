@@ -7,8 +7,9 @@ from .rotation_matrix_nd import rotation_from_angle_and_plane
 from .rotation_matrix_2d import rotation_from_angle
 from .rotation_matrix_nd import random_matrix
 
-from pbr.version import VersionInfo
+# this code appears to mess up pyinstaller
+# from pbr.version import VersionInfo
 
-_v = VersionInfo('mgen').semantic_version()
-__version__ = _v.release_string()
-version_info = _v.version_tuple()
+# _v = VersionInfo('mgen').semantic_version()
+# __version__ = _v.release_string()
+# version_info = _v.version_tuple()
