@@ -20,10 +20,11 @@ jobs:
         run: |
           python3 -m pip install --upgrade pip
           pip install setuptools codecov pytest
+          python3 setup.py develop
 
-      - name: Run tests
+      - name: Run tests and create coverage report
         run : |
-          python3 -m coverage run setup.py test
+          coverage run -m unittest -v
 
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
