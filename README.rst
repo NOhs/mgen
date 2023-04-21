@@ -19,8 +19,9 @@
 .. |license| image:: https://img.shields.io/badge/License-BSD%203--Clause-blue.svg
     :target: https://opensource.org/licenses/BSD-3-Clause
 
-.. |codacy| image:: https://api.codacy.com/project/badge/Grade/ab622cde22a24af4b9bcb62a49002936
-    :target: https://www.codacy.com/app/NOhs/mgen?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=NOhs/mgen&amp;utm_campaign=Badge_Grade
+.. |codacy| image:: https://app.codacy.com/project/badge/Grade/ab622cde22a24af4b9bcb62a49002936
+    :target: https://app.codacy.com/gh/NOhs/mgen/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade
+
 
 MGen: Convenient matrix generation functions
 ============================================
