@@ -2,6 +2,7 @@ name: Test Python 🐍 package 📦
 on: [push]
 jobs:
   Build-and-Test:
+    name: Build and test using Python ${{ matrix.python-version }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
