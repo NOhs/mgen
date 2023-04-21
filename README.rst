@@ -1,20 +1,27 @@
-|test| |coverage| |documentation| |pypi| |license| |codacy|
+|test| |coverage| |documentation| |pypi| |python_vers| |license| |codacy|
 
-.. |test| image:: https://travis-ci.org/NOhs/mgen.svg?branch=master
-    :target: https://travis-ci.org/NOhs/mgen
-.. |coverage| image:: https://coveralls.io/repos/github/NOhs/mgen/badge.svg
-    :target: https://coveralls.io/github/NOhs/mgen
+.. |test| image:: https://github.com/NOhs/mgen/actions/workflows/test.yml/badge.svg
+    :target: https://github.com/NOhs/mgen/actions/workflows/test.yml
+
+.. |coverage| image:: https://codecov.io/github/NOhs/mgen/branch/master/graph/badge.svg?token=FC0NS4nchO
+    :target: https://codecov.io/github/NOhs/mgen
+
 .. |documentation| image:: https://readthedocs.org/projects/mgen/badge/?version=latest
     :target: http://mgen.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
+
 .. |pypi| image:: https://badge.fury.io/py/mgen.svg
     :target: https://badge.fury.io/py/mgen
 
+.. |python_vers| image:: https://img.shields.io/pypi/pyversions/mgen
+    :alt: PyPI - Python Version
+
 .. |license| image:: https://img.shields.io/badge/License-BSD%203--Clause-blue.svg
     :target: https://opensource.org/licenses/BSD-3-Clause
-    
-.. |codacy| image:: https://api.codacy.com/project/badge/Grade/ab622cde22a24af4b9bcb62a49002936    
-    :target: https://www.codacy.com/app/NOhs/mgen?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=NOhs/mgen&amp;utm_campaign=Badge_Grade
+
+.. |codacy| image:: https://app.codacy.com/project/badge/Grade/ab622cde22a24af4b9bcb62a49002936
+    :target: https://app.codacy.com/gh/NOhs/mgen/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade
+
 
 MGen: Convenient matrix generation functions
 ============================================
