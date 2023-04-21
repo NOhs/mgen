@@ -2,8 +2,8 @@
 
 .. |test| image:: https://travis-ci.org/NOhs/mgen.svg?branch=master
     :target: https://travis-ci.org/NOhs/mgen
-.. |coverage| image:: https://coveralls.io/repos/github/NOhs/mgen/badge.svg
-    :target: https://coveralls.io/github/NOhs/mgen
+.. |coverage| image:: https://codecov.io/github/NOhs/mgen/branch/master/graph/badge.svg?token=FC0NS4nchO
+    :target: https://codecov.io/github/NOhs/mgen
 .. |documentation| image:: https://readthedocs.org/projects/mgen/badge/?version=latest
     :target: http://mgen.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
@@ -12,8 +12,8 @@
 
 .. |license| image:: https://img.shields.io/badge/License-BSD%203--Clause-blue.svg
     :target: https://opensource.org/licenses/BSD-3-Clause
-    
-.. |codacy| image:: https://api.codacy.com/project/badge/Grade/ab622cde22a24af4b9bcb62a49002936    
+
+.. |codacy| image:: https://api.codacy.com/project/badge/Grade/ab622cde22a24af4b9bcb62a49002936
     :target: https://www.codacy.com/app/NOhs/mgen?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=NOhs/mgen&amp;utm_campaign=Badge_Grade
 
 MGen: Convenient matrix generation functions
