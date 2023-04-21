@@ -19,15 +19,11 @@ jobs:
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
-          pip install setuptools coveralls pytest
+          pip install setuptools codecov pytest
 
       - name: Run tests
         run : |
-          coverage run --source mgen setup.py test
-          coverage report -m
+          python3 -m coverage run setup.py test
 
-      - name: Upload test coverage
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run : |
-          coveralls
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
