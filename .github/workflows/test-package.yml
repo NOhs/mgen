@@ -1,0 +1,31 @@
+name: Test Python 🐍 package 📦
+on: [push]
+jobs:
+  Build-and-Test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.6", "3.7", "3.8", "3.9", "3.10", "3.11"]
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install setuptools coveralls pytest
+
+      - name: Run tests
+        run : |
+          coverage run --source mgen setup.py test
+          coverage report -m
+
+      - name: Upload test coverage
+        run : |
+          coveralls
