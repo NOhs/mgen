@@ -1,8 +1,5 @@
-name: Publish Python 🐍 package 📦
-on:
-  push:
-    tags:
-      - '*'
+name: Publish Python 🐍 package 📦 To Test PyPi
+on: [push]
 
 jobs:
   Build-and-Publish:
@@ -23,7 +20,8 @@ jobs:
           python3 -m pip install build
           python3 -m build --sdist --wheel --outdir dist/
 
-      - name: Publish 📦 to PyPi
+      - name: Publish 📦 to Test PyPi
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          password: ${{ secrets.PYPI_API_TOKEN }}
+          repository-url: https://test.pypi.org/legacy/
+          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
