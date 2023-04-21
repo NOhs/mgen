@@ -1,12 +1,15 @@
 |test| |coverage| |documentation| |pypi| |python_vers| |license| |codacy|
 
-.. |test| image:: https://travis-ci.org/NOhs/mgen.svg?branch=master
-    :target: https://travis-ci.org/NOhs/mgen
+.. |test| image:: https://github.com/NOhs/mgen/actions/workflows/test.yml/badge.svg
+    :target: https://github.com/NOhs/mgen/actions/workflows/test.yml
+
 .. |coverage| image:: https://codecov.io/github/NOhs/mgen/branch/master/graph/badge.svg?token=FC0NS4nchO
     :target: https://codecov.io/github/NOhs/mgen
+
 .. |documentation| image:: https://readthedocs.org/projects/mgen/badge/?version=latest
     :target: http://mgen.readthedocs.io/en/latest/?badge=latest
     :alt: Documentation Status
+
 .. |pypi| image:: https://badge.fury.io/py/mgen.svg
     :target: https://badge.fury.io/py/mgen
 
